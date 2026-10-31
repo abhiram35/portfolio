@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --paper: 246 243 236;
+    --surface: 255 253 248;
+    --ink: 23 22 20;
+    --muted: 110 105 96;
+    --rule: 222 216 204;
+    --accent: 196 65 23;
+    --band: 28 27 24;
+    --band-ink: 246 243 236;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: 21 20 18;
+      --surface: 30 28 25;
+      --ink: 236 232 224;
+      --muted: 160 153 142;
+      --rule: 50 47 42;
+      --accent: 240 120 80;
+      --band: 34 32 28;
+      --band-ink: 236 232 224;
+      color-scheme: dark;
+    }
+  }
+  html {
+    scroll-behavior: smooth;
+    background: rgb(var(--paper));
+  }
+  body {
+    @apply bg-paper font-sans text-base leading-relaxed text-ink antialiased sm:text-[17px];
+  }
+  ::selection {
+    background: rgb(var(--accent) / 0.2);
+  }
+  :focus-visible {
+    outline: 2px solid rgb(var(--accent));
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto max-w-6xl px-5 sm:px-8;
+  }
+  .link {
+    @apply underline decoration-accent/50 decoration-1 underline-offset-4 transition-colors hover:text-accent hover:decoration-accent;
+  }
+  .btn {
+    @apply inline-flex items-center gap-2 rounded-md px-5 py-2.5 text-[15px] font-medium transition-colors;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
